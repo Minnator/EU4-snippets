@@ -1,0 +1,189 @@
+{
+	// Generals stuff
+	"Modifier": {
+		"prefix": ["modifier"],
+		"body": ["modifier = {\n\tfactor = ${1:<value_int>}\n\t${2:<trigger>}\n}"],
+		"description": "Rough outline of a modifier"
+	},
+	"Color": {
+		"prefix": ["color"],
+		"body": ["color = { ${1:<reg_int>} ${2:<green_int>} ${3:<blue_int>} }"],
+		"description": "Rough outilne of a color"
+	},
+	"Conditional Modifier": {
+		"prefix": ["conditional_modifier"],
+		"body": ["conditional_modifier = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\tmodifier = {\n\t\t${2:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a conditional modifier"
+	},
+
+	// Advisors
+	"Advisor": {
+		"prefix": ["advisor"],
+		"body": ["${1:<advisor_name>} = {\n\tmonarch_power = ${2|ADM,DIP,MIL|}\n\t${3:<modifier>}\n\tchance = {\n\t\tfactor = 1\n\t}\n\tai_will_do = {\n\t\tfactor = 1\n\t}\n}$0"],
+		"description": "Rough outline for an advisor"
+	},
+	"Skill scaled Modifier": {
+		"prefix": ["ssm", "skill_scaled_modifier"],
+		"body": ["skill_scaled_modifier = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\tmodifier = {\n\t\t${2:<modifier>}\n\t}\n} $0"],
+		"description": "Adds the Pound symbols for an icon"
+	},
+
+	// Age
+	"Age": {
+		"prefix": ["age"],
+		"body": ["${1:<age_name>} = {\n\tstart = ${2:<year>}\n\n\tcan_start = {\n\t\t${3:<trigger>}\n\t}\n\n\t${4:<modifier>}\n\n\tobjectives = {\n\t\t${5:<objectives>}\n\t}\n\n\tabilities = {\n\t\t${6:<abilities>}\n\t}\n}"],
+		"description": "Rough outline of an age"
+	},
+	"Age Objective": {
+		"prefix": ["objective", "age_objective"],
+		"body": ["${1:<objective_name>} = {\n\tallow = {\n\t\t${2:<trigger>}\n\t}\n\t${3:<objective_trigger>}\n}"],
+		"description": "Rough outline for an age objective"
+	},
+	"Age Ability": {
+		"prefix": ["ability" , "age_ability"],
+		"body": ["${1:ability_name} = {\n\teffect = {\n\t\t${2:<effect>}\n\t}\n\n\tmodifier = {\n\t\t${3:<modifier>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 10\n\t}\n}"],
+		"description": "Rough outline for an age ability"
+	},
+
+	// Bookmarks
+	"Bookmark": {
+		"prefix": ["bookmark"],
+		"body": ["bookmark = {\n\tname = \"${1:<name>}_NAME\"\n\tdesc = \"${1:<name>}\"_DESC\n\tdate = ${2:<year>}.${3:<day>}.${4:<month>}\n\n\tcountry = ${5:<tag>}\n\n\tcenter = ${6:<province_id>}\n\n\tdefault = ${7:<bool>}\n\n\teasy_country = ${8:<tag>}\n\n\teffect = {\n\t\t${9:<effect>}\n\t}\n}"],
+		"description": "Rough outline of a bookmark"
+	},
+
+	// Buildings
+	"Building": {
+		"prefix": ["building"],
+		"body": ["${1:<building_name>} = {\n\tcost = ${2:<ducats_cost>}\n\ttime = ${3:<months_build_time>}\n\n\t${4:<modifier>}\n\n\t${5|onmap = yes,# onmap = yes|}\n\t${6|government_specific = yes,# government_specific = yes|}\n\t${7|influencing_fort = yes,# influencing_fort = yes|}\n\tmake_obsolete = ${8:<building>}\n\n\tbuild_trigger = {\n\t\t${8:#<trigger>}\n\t}\n\n\tkeep_trigger = {\n\t\t${9:#<trigger>}\n\t}\n\n\ton_built = {\n\t\t${10:#<effect>}\n\t}\n\n\ton_destroyed = {\n\t\t${11:#<effect>}\n\t}\n\n\ton_construction_started = { }\n\ton_construction_canceled = { }\n\ton_obsolete = { }\n\n\tai_will_do = {\n\t\tfactor = 1.5\n\t}\n}"],
+		"description": "Rough outline of a building"
+	},
+	"Manufactory Base": {
+		"prefix": ["manufactory_base"],
+		"body": ["manufactory = {\n\tcost = ${1:<ducats_cost>}\n\ttime = ${2:<months_build_time>}\n\n\tmodifier = {\n\t\t${3:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of the base manufactory"
+	},
+	"Manufactory": {
+		"prefix": ["manufactory"],
+		"body": ["${1:<manufactory_name>} = {\n\tmanufactory = {\n\t\t${2:<tradegood_a>}\n\t\t${3:<tradegood_b>}\n\t}\n\n\t${5|onmap = yes,# onmap = yes|}\n\t${6|show_separate = yes,# show_separate = yes|}\n\n\ton_built = {\n\t\t${9:#<effect>}\n\t}\n\n\ton_destroyed = {\n\t\t${10:#<effect>}\n\t}\n\ton_obsolete = { }\n\n\tai_will_do = {\n\t\tfactor = 1\n\t}\n}"],
+		"description": "Rough outline of a tradegood specific manufactory"
+	},
+
+	// Casus Belli
+	"CB-Type": {
+		"prefix": ["cb_type"],
+		"body": ["${1:<cb_name>} = {\n\t${2|valid_for_subject = yes,# valid_for_subject = yes|}\n\n\t${3|is_triggered_only = yes,# is_triggered_only = yes|}\n\t${4:<months_available>}\n\n\tprequisites_self = {\n\t\t${5:<trigger>}\n\t}\n\n\tprequisites = {\n\t\t${6:<trigger>}\n\t}\n\n\twar_goal = ${7:<war_goal>}\n\n\tattacker_disabled_po = {\n\t\t${8:<peace_option>}\n\t}\n}"],
+		"description": "Rough outline of a cb_type"
+	},
+
+	// Center of Trade
+	"Center of trade": {
+		"prefix": ["cot", "center_of_trade"],
+		"body": ["${1:<cot_name>} = {\n\tleve = ${2|1,2,3|}\n\tdevelopment = ${3:<X_development_trigger>}\n\tcost = ${4:<ducats_cost>}\n\ttype = ${5|coastal,inland|}\n\n\tprovince_modifiers = {\n\t\t${6:<modifier>}\n\t}\n\n\tstate_modifiers = {\n\t\t${7:<modifier>}\n\t}\n\n\tglobal_modifiers = {\n\t\t${8:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a center_of_trade"
+	},
+
+	// Church aspect
+	"Church aspect": {
+		"prefix": ["church_aspect"],
+		"body": ["${1:<church_aspect_name>} = {\n\tcost = ${2:<ducats_cost>}\n\t${3|is_blessing = yes,# is_blessing = yes|}\n\n\teffect = {\n\t\t${4:<effect>}\n\t}\n\n\tmodifier = {\n\t\t${5:<modifier>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 1\n\t}\n}"],
+		"description": "Rough outline of a church_aspect"
+	},
+
+	// Colonial regions and name entries for it
+	"Colonial regions": {
+		"prefix": ["colonial_region"],
+		"body": ["${1:<colonial_region_name>} = {\n\tcolor = { ${2:<red>} ${3:<green>} ${4:<blue>} }\n\n\t# Random New World\n\ttax_income = 0\n\tnative_size = 8\n\tnative_ferocity = 1\n\tnative_hostileness = 4\n\n\ttrade_goods = {\n\t\t${5:<trade_good>} = ${6:<spawn_chance>}\n\t}\n\n\tculture = {\n\t\t${7:<culture>} = ${8:<spawn_chance>}\n\t}\n\n\treligion = {\n\t\t${9:<religion>} = ${10:<spawn_chance>}\n\t}\n\n\tprovinces = {\n\t\t${11:<province_ids>}\n\t}\n\n\t# Specific Name Entries:\n\n}"],
+		"description": "Rough outline of a colonial_region"
+	},
+	"Custom name entry": {
+		"prefix": ["name_entry", "custom_name_entry"],
+		"body": ["names = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\n\tname = \"${2:<localisation_key>}\n\"}"],
+		"description": "Rough outline of a custom_name_entry"
+	},
+
+	// Country
+	"Country file": {
+		"prefix": ["country"],
+		"body": ["graphical_culture = ${1|westerngfx,easterngfx,muslimgfx,indiangfx,asiangfx,africangfx,northamericagfx,southamericagfx,inuitgfx,aboriginalgfx,polynesiangfx,southeastasiangfx|}\ncolor = { ${2:<red>} ${3:<green>} ${4:<blue>} }\nrevolutionary_colors = { ${5:<red>} ${6:<green>} ${7:<blue>} }\nhistorical_score = 1000\n\nhistorical_idea_groups = {\n\t${8:<idea_groups>}\n}\n\nhistorical_units = {\n\t\n}\n\nmonarch_names = {\n\t${9:#< Monarchs snippet>}\n}\n\nleader_names = {\n\t${10:<leader_name_1 leader_name_2 ...>}\n}\n\nship_names = {\n\t${11:<ship_name_1 ship_name_2 ...>}\n}\n\n\tarmy_names = {\n\t${12:<army_name>}\n}\n\nfleet_names = {\n\t${13:<fleet_name>}\n}"],
+		"description": "Rough outline of a country file"
+	},
+	"Monarchs name": {
+		"prefix": ["monarch_name"],
+		"body": ["\"${1:<name>} #${2:<ordinal_number>}\" = ${3:<spawn_chance>}\n$0"],
+		"description": "Rough outline of a monarch_name"
+	},
+
+	// Defender of faith
+	"Defender of faith": {
+		"prefix": ["dof", "defender_of_faith"],
+		"body": ["${1:<defender_of_faith_x>} = {\n\tlevel = ${2|1,2,3,4,5|}\n\trange_from = ${3:<lower_limit>}\n\trange_to = ${4:<range_to>}\n\n\tmodifier = {\n\t\t${5:<modifier>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 1\n\t}\n}"],
+		"description": "Rough outline of a defender of faith"
+	},
+
+	// Diplomatic actions
+	"Diplomatic action [modify existing one]": {
+		"prefix": ["dip_action", "diplomatic_action"],
+		"body": ["${1|royal_marriage,declarewar,requestpeace,support_independence_action,allianceaction,embargoaction,annexationaction,integrationaction,vassalaction,guaranteeaction,warningaction,threaten_war,milaccess,fleet_access,offer_fleet_access,offermilaccess,insultaction,giftaction,claimaction,callaction,offerloan,warsubsidy,sellprov,imperial_relations_action,imperial_realm_war_action,religious_unity_action,grant_electorate,remove_electorate,grant_freecity,remove_freecity,demand_unlawful_territory_action,call_crusade_action,excommunicate_action,enforce_peace,improve_relation,fabricate_claim,justify_trade_conflict,transfer_trade_power,infiltrate_administration,sabotage_reputation,support_rebels,sow_discontent,agitate_for_liberty,form_coalition,request_to_join_federation,invite_to_federation,support_heir,break_marriage,designate_march,ask_for_march,sell_ships_action,abandon_union,takeondebt,influence_nation,claim_states,steer_trade,stealmap,spy_network,invite_to_trade_league,request_to_join_trade_league,sharemap,intervene_in_war,break_alliance,tributary_state_action,ask_for_tributary_state_action,knowledge_sharing|} = {\n\n\t# use dip_condition here\n\n\teffect = {\n\t\t$0\n\t}\n}"],
+		"description": "Rough outline of a diplomatic action"
+	},
+	"Condition for diplomatic actions": {
+		"prefix": ["dip_condition"],
+		"body": ["condition = {\n\ttooltip = ${1:<TOOLTIP>}\n\n\tpotential = {\n\t\t${2:<trigger>}\n\t}\n\tallow = {\n\t\t${3:<trigger>}\n\t}\n}"],
+		"description": "Rough outline of a condition for modifying a diplomatic action"
+	},
+
+	// Disaster
+	"Disaster": {
+		"prefix": ["disaster"],
+		"body": ["${1:<disaster_name>} = {\n\tpotential = {\n\t\t${2:<trigger>}\n\t}\n\n\tcan_start = {\n\t\t${3:<trigger>}\n\t}\n\n\tcan_stop = {\n\t\t${4:<trigger>}\n\t}\n\n\tcan_end = {\n\t\t${5:<trigger>}\n\t}\n\n\tprogress = {\n\t\t# use 'modifier' here\n\t}\n\n\tmodifier = {\n\t\t${6:<modifier>}\n\t}\n\n\ton_start = ${7:<event_id>}\n\ton_end = ${8:<event_id>}\n\n\ton_monthly = {\n\t\tevents = {\n\t\t\t${9:<event_id.1 \n\t\t\tevent_id.2 \n\t\t\t...>}\n\t\t}\n\n\t\trandom_events = {\n\t\t\t1000 = 0\n\t\t\t${10:<chance>} = ${11:<event_id>}\n\t\t}\n\t}\n}"],
+		"description": "Rough outline of a disaster"
+	},
+
+	// Estates
+	"Estate agenda": {
+		"prefix": ["agenda"],
+		"body": ["${1:<agenda_name>} = {\n\tcan_select = {\n\t\t${1:<trigger>}\n\t}\n\n\tselection_weight = {\n\t\tfactor = 1\n\t\t# Use 'modfiier' here\n\t}\n\n\tpre_effect = {\n\t\t${3:<effect>}\n\t}\n\n\tprovinces_to_highlight = {\n\t\t${4:<province_trigger>}\n\t}\n\n\tfail_if = {\n\t\t${5:<trigger>}\n\t}\n\n\ttask_requirements = {\n\t\t${6:<effect>}\n\t}\n\n\ttask_complete = {\n\t\t${7:<effect>}\n\t}\n\n\tfailing_effect = {\n\t\t${8:<effect>}\n\t}\n}"],
+		"description": "Rough outline of an agenda"
+	},
+	"Crownland bonus": {
+		"prefix": ["crownland_bonus", "bonus"],
+		"body": ["bonus = {\n\tkey = ${1:<localisation_key>}\n\trange_from = ${2:<range_int>}\n\trange_to = ${3:<range_int>}\n\n\tmodifier = {\n\t\t${4:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a crownland_bonus"
+	},
+	"Crownland interaction": {
+		"prefix": ["interaction"],
+		"body": ["interaction = {\n\tkey = ${1:<localisation_key>}\n\trandom_seed = ${2:crown_land_share}\n\tcooldown_months = ${3:<months_int>}\n\n\ttrigger = {\n\t\t${4:<trigger>}\n\t}\n\n\tefect = {\n\t\t${5:<effect>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 25\n\t\t# Use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of a Crownland interaction"
+	},
+	"Estate Privilege": {
+		"prefix": ["estate_privilege","privileve"],
+		"body": ["${1:<name>} = {\n\ticon = ${2:<icon>}\n\tland_share = ${3:<value_int>}\n\tmax_absolutism = ${4:<value_int>}\n\tloyalty = ${5:<value_float>}\n\tinfluence = ${6:<value_float>}\n\tcan_select = {\n\t\t\n\t}\n\tis_valid = {\n\t\t\n\t}\n\tcan_revoke = {\n\t\t\n\t}\n\ton_invalid = {\n\t\t\n\t}\n\ton_granted = {\n\t\t\n\t}\n\tmodifier_by_crownland_ownership = {\n\t\t${7:<modifier>}\n\t}\n\tpenalties = {\n\t\t\n\t}\n\tbenefits = {\n\t\t${8:<modifier>}\n\t}\n\tmechanics = {\n\t\t\n\t}\n\t# cooldown_years = value_int\n\ton_cooldown_expires = {\n\t\t\n\t}\n\t#Use 'loyalty_scaled_conditional_modifier' or 'influence_scaled_conditional_modifier'\n\tai_will_do = {\n\t\tfactor = 1\n\t#Use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of an estate privilege"
+	},
+	"Loyalty scaled modifier": {
+		"prefix": ["loyalty_scaled_conditional_modifier"],
+		"body": ["loyalty_scaled_conditional_modifier = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\tmodifier = {\n\t\t${2:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a loyalty_scaled_conditional_modifier"
+	},
+	"Influence scaled modifier": {
+		"prefix": ["influence_scaled_conditional_modifier"],
+		"body": ["influence_scaled_conditional_modifier = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\tmodifier = {\n\t\t${2:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a influence_scaled_conditional_modifier"
+	},
+	"Estate": {
+		"prefix": ["estate"],
+		"body": ["${1:<name>} = {\n\ticon = ${2:<value_int>}\n\ttrigger = {\n\t\t${3:<trigger>}\n\t}\n\n\tcountry_modifier_happy = {\n\t\t${4:<modifier>}\n\t}\n\tcountry_modifier_neutral = {\n\t\t${5:<modifier>}\n\t}\n\tcountry_modifier_angry = {\n\t\t${6:<modifier>}\n\t}\n\n\tland_ownership_modifier = {\n\t\t${7:<modifier>}\n\t}\n\n\tprovince_independence_weight = {\n\t\tfactor = 1\n\t\t#Use 'modifier' here\n\t}\n\n\tbase_influence = ${8:<value_int>}\n\n\t#Use 'loyalty_modifier' or 'influence_modifier'\n\n\t#Use 'custom_name'\n\n\t${9|# , |}contribute_to_curia_treasury = yes\n\n\tcolor = { ${10:<red>} ${11:<green>} ${12:<blue>} }\n\n\tprivileges = {\n\t\t# list privileges here\n\t}\n\n\tagendas = {\n\t\t# list agendas here\n\t}\n\n\tinfluence_from_dev_modifier = ${13:1.0}\n}"],
+		"description": "A Rough Outline of an estate"
+	},
+	"Loyalty modifier": {
+		"prefix": ["loyalty_modifier"],
+		"body": ["loyalty_modifier = { \n\tdesc = ${1:<localisation_key>}\n\ttrigger = {\n\t\t${2:<trigger>}\n\t}\n\tloyalty = ${3:<value>}\n}"],
+		"description": "A Rough outilne of a loyalty_modifier"
+	},
+	"Influence modifier": {
+		"prefix": ["influence_modifier"],
+		"body": ["influence_modifier = { \n\tdesc = ${1:<localisation_key>}\n\ttrigger = {\n\t\t${2:<trigger>}\n\t}\n\tinfluence = ${3:<value>}\n}"],
+		"description": "A Rough outilne of a influence_modifier"
+	},
+}
