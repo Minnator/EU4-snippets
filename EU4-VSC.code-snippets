@@ -1,5 +1,30 @@
 {
 	// Generals stuff
+	"if limit": {
+		"prefix": ["iff"],
+		"body": ["if = {\n\tlimit = {\n\t\t${1:}\n\t}\n\t${2:}\n}\n$0"],
+		"description": "An IF statement with a LIMIT"
+	},
+	"if limit no newline": {
+		"prefix": ["ifl"],
+		"body": ["if = { limit = { ${1:} } ${2:} } $0"],
+		"description": "An IF statement with a LIMIT"
+	},
+	"else if limit no newline": {
+		"prefix": ["elifl"],
+		"body": ["else_if = { limit = { ${1:} } ${2:} } $0"],
+		"description": "An IF statement with a LIMIT"
+	},
+	"not": {
+		"prefix": ["not"],
+		"body": ["NOT = { ${1:always = no} } $0"],
+		"description": "Singe line not statement"
+	},
+	"else if limit": {
+		"prefix": ["elif", "else"],
+		"body": ["else_if = {\n\tlimit = {\n\t\t${1:}\n\t}\n\t${2:}\n}\n$0"],
+		"description": "An IF statement with a LIMIT"
+	},
 	"Modifier": {
 		"prefix": ["modifier"],
 		"body": ["modifier = {\n\tfactor = ${1:<value_int>}\n\t${2:<trigger>}\n}"],
@@ -14,6 +39,28 @@
 		"prefix": ["conditional_modifier"],
 		"body": ["conditional_modifier = {\n\ttrigger = {\n\t\t${1:<trigger>}\n\t}\n\tmodifier = {\n\t\t${2:<modifier>}\n\t}\n}"],
 		"description": "Rough outline of a conditional modifier"
+	},
+
+	//Localisation
+	"mod loc": {
+		"prefix": ["modloc"],
+		"body": ["${1:}:0 \"${2:modifier}\"\ndesc_${1:}:0 \"\""],
+		"description": "Localisation template for modifier"
+	},
+	"event loc": {
+		"prefix": ["eloc"],
+		"body": ["${1:}.t:0 \"${2:}\"\n${1:}.d:0 \"$0\""],
+		"description": "Localisation template for event title and desc"
+	},
+	"missions loc": {
+		"prefix": ["mloc"],
+		"body": ["${1:}_title:0 \"${2:}\"\n${1:}_desc:0 \"$0\"\n"],
+		"description": "Localisation template for event title and desc"
+	},
+	"loc": {
+		"prefix": ["loc"],
+		"body": ["${1:}:0 \"${2:}\"\n"],
+		"description": "Localisation template"
 	},
 
 	// Advisors
@@ -186,4 +233,124 @@
 		"body": ["influence_modifier = { \n\tdesc = ${1:<localisation_key>}\n\ttrigger = {\n\t\t${2:<trigger>}\n\t}\n\tinfluence = ${3:<value>}\n}"],
 		"description": "A Rough outilne of a influence_modifier"
 	},
-}
+
+	//factions
+	"Faction": {
+		"prefix": ["faction"],
+		"body": ["${1:<name>} = { \n\tmonarch_power = ${2|ADM,DIP,MIL|}\n\t${3:<trigger>}\n\n\tmodifier = {\n\t\t${4:<modifier>}\n\t}\n}"],
+		"description": "A rough outline of a faction"
+	},
+
+	//federation advancements
+	"Federation advancements": {
+		"prefix": ["federation_advancement"],
+		"body": ["${1:<name>} = {\n\tgfx = ${2:<gfx_name>}\n\n\tcan_pick = {\n\t\t${3:<trigger>}\n\t}\n\n\teffect = {\n\t\t${4:<effect>}\n\t}\n\n\tai_chance = {\n\t\tfactor = 1\n\t\t# use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of a federation_advancement"
+	},
+
+	//fervor
+	"Fervor": {
+		"prefix": ["fervor"],
+		"body": ["${1:<name>} = {\n\tcost = ${2:<value_int>}\n\n\tpotential = {\n\t\t${3:<trigger>}\n\t}\n\n\ttrigger = {\n\t\t${4:<trigger>}\n\t}\n\n\teffect = {\n\t\t${5:<effect>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 1\n\t\t# use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of a fervor"
+	},
+
+	//Cult
+	"Cult": {
+		"prefix": ["cult"],
+		"body": ["${1:<name>}= {\n\t${2:<modifier>}\n\n\tallow = {\n\t\t${3:<trigger>}\n\t}\n\n\tsprite = ${4:<index_int>}\n\n\tai_will_do = {\n\t\tfactor = 1\n\t\t# use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of a feteshist_cult"
+	},
+
+	//Flagship modifier
+	"Flagship modifier": {
+		"prefix": ["flagship_modifier"],
+		"body": ["${1:<name>} = {\n\ttrigger = {\n\t\t${2:<trigger>}\n\t}\n\n\tmodifier = {\n\t\t${3:<modifier>}\n\t}\n\n\tai_trade_score = {\n\t\tfactor = 0\n\t}\n\n\tai_war_score = {\n\t\tfactor = 1\n\t}\n}"],
+		"description": "Rough outline of a flagship_modifier"
+	},
+
+	//Golden bull
+	"Golden Bull": {
+		"prefix": ["golden_bull"],
+		"body": ["${1:<name>} = {\n\tmechanics = {\n\t\t${2|crusades_after_age_limit,cardinals_spread_institution, |}\n\t}\n\n\tmodifier = {\n\t\t${3:<modifier>}\n\t}\n\n\tpotential = {\n\t\t${4:<trigger>}\n\t}\n\n\ttrigger = {\n\t\t${5:<trigger>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 0\n\t}\n}"],
+		"description": "Rough outline of a GOlden Bull"
+	},
+
+	//Government mechanics
+	"Government mechanic interaction": {
+		"prefix": ["intearction"],
+		"body": ["${1:interaction_name} = {\n\ticon = ${2:prussian_militarization_gov_mech_3_interaction}\n\ttrigger = {\n\t\t${3:always = yes}\n\t}\n\teffect = {\n\t\t${4:add_mil_power = -30}\n\t}\n\tcooldown_years = ${5:10}\n\tcooldown_token = ${6:Intearction_cooldown}\n\tai_chance = {\n\t\tfactor = 10\n\t}\n}\n$0"],
+		"description": "Government mechanic interaction"
+	},
+	"Geovernment mechanic power": {
+		"prefix": ["power"],
+		"body": ["${1:power_name} = {\n\tmin = ${2:0}\n\tmax = ${3:100}\n\tdefault = ${4:0}\n\treset_on_new_ruler = ${5:no}\n\tbase_monthly_growth = ${6:0}\n\tscaled_modifier = {\n\t\t${7:build_cost = -0.1}\n\t}\n\ton_max_reached = {\n\t\t${8:}\n\t}on_min_reached = {\n\t\t${9:}\n\t}\n}\n$0"],
+		"description": "Geovernment mechanic power"
+	},
+	"Government Mechanic Base": {
+		"prefix": ["mechanic"],
+		"body": ["${1:gov_mech_name} = {\n\talert_icon_index = 10\n\tavailable = {\n\t\t${2:tag = FRA}\n\t}\n\tpowers = {\n\t\t${3:}\n\t}\n\tinteractions = {\n\t\t${4:}\n\t}\n}\n$0"],
+		"description": "Government Mechanic Base Skeletton"
+	},
+
+	//Government reforms
+	"Base Government reform": {
+		"prefix": ["reform"],
+		"body": ["${1:reform_name} = {\n\ticon = \"${2:indian_crown}\"\n\tallow_normal_conversion = ${3:yes}\n\tpotential = {\n\t\t${4:<trigger>}\n\t}\n\tmodifiers = {\n\t\t${5:<modifier>}\n\t}\n\tmechanics = {\n\t\t${6:}\n\t}\n\tai = {\n\t\tfactor = 3\n\t}\n}"],
+		"description": "Base Skeleton for a government reform"
+	},
+
+	//Great Project
+	"Great Project": {
+		"prefix": ["great_project"],
+		"body": ["${1:<name>} = {\n\tstart = ${2:<province_id>}\n\tdate = ${3:<date>}\n\ttime = {\n\t\tmonths = ${4:<value_int>}\n\t}\n\tbuild_cost = ${5:<value_int>}\n\tcan_be_moved = ${6|yes,no|}\n\tmove_days_per_unit_distance = ${7:<value_int>}\n\tstart_tier = ${8:<value_int>}\n\ttype = ${9|monument,canal|}\n\n\tbuild_trigger = {\n\t\t${10:<trigger>}\n\t}\n\n\ton_built = {\n\t\t${11:<effect>}\n\t}\n\n\ton_destroyed = {\n\t\t${12:<effect>}\n\t}\n\n\tcan_use_modifiers_trigger = {\n\t\t${13:<trigger>}\n\t}\n\n\tcan_upgrade_trigger = {\n\t\t${14:<trigger>}\n\t}\n\n\tkeep_trigger = {\n\t\t${15:<trigger>}\n\t}\n\n\ttier_0 = {\n\t\tupgrade_time = {\n\t\t\tmonths = 0\n\t\t}\n\n\t\tcost_to_upgrade = {\n\t\t\tfactor = 0\n\t\t}\n\n\t\tprovince_modifier = {\n\t\t\t${16:<modifier>}\n\t\t}\n\n\t\tares_modifier = {\n\t\t\t${17:<modifier>}\n\t\t}\n\n\t\tcountry_modifier = {\n\t\t\t${18:<modifier>}\n\t\t}\n\n\t\ton_upgraded = {\n\t\t\t${19:<effect>}\n\t\t}\n\t}\n\n\ttier_1 = {\n\t\tupgrade_time = {\n\t\t\tmonths = 120\n\t\t}\n\n\t\tcost_to_upgrade = {\n\t\t\tfactor = 1000\n\t\t}\n\n\t\tprovince_modifier = {\n\t\t\t${20:<modifier>}\n\t\t}\n\n\t\tares_modifier = {\n\t\t\t${21:<modifier>}\n\t\t}\n\n\t\tcountry_modifier = {\n\t\t\t${22:<modifier>}\n\t\t}\n\n\t\ton_upgraded = {\n\t\t\t${23:<effect>}\n\t\t}\n\t}\n\n\ttier_2 = {\n\t\tupgrade_time = {\n\t\t\tmonths = 240\n\t\t}\n\n\t\tcost_to_upgrade = {\n\t\t\tfactor = 2500\n\t\t}\n\n\t\tprovince_modifier = {\n\t\t\t${24:<modifier>}\n\t\t}\n\n\t\tares_modifier = {\n\t\t\t${25:<modifier>}\n\t\t}\n\n\t\tcountry_modifier = {\n\t\t\t${26:<modifier>}\n\t\t}\n\n\t\ton_upgraded = {\n\t\t\t${27:<effect>}\n\t\t}\n\t}\n\n\ttier_3 = {\n\t\tupgrade_time = {\n\t\t\tmonths = 480\n\t\t}\n\n\t\tcost_to_upgrade = {\n\t\t\tfactor = 5000\n\t\t}\n\n\t\tprovince_modifier = {\n\t\t\t${25:<modifier>}\n\t\t}\n\n\t\tares_modifier = {\n\t\t\t${26:<modifier>}\n\t\t}\n\n\t\tcountry_modifier = {\n\t\t\t${27:<modifier>}\n\t\t}\n\n\t\ton_upgraded = {\n\t\t\t${28:<effect>}\n\t\t}\n\t}\n}"],
+		"description": "Rough outline of a great_project"
+	},
+
+	//Holy Order
+	"Holy Order": {
+		"prefix": ["holy_order"],
+		"body": ["${1:<name>} = {\n\ticon = ${2:<gfx_icon>}\n\tcolor = { ${3:<r g b>} }\n\tcost = ${4:<value_int>}\n\tcost_type = ${5|adm_power,mil_power, dip_power|}\n\tlocalization = ${6:<localisation_key>}\n\n\ttrigger = {\n\t\t${7:<trigger>}\n\t}\n\n\tper_province_effect = {\n\t\t${8:<effect>}\n\t}\n\n\tper_province_abandon_effect = {\n\t\t${9:<effect>}\n\t}\n\n\tmodifier = {\n\t\t${10:<modifier>}\n\t}\n\n\tai_priority = {\n\t\tfactor = 1\n\t}\n}"],
+		"description": "Rough outline of a holy_order"
+	},
+
+	//Idea
+	"Idea (Group)": {
+		"prefix": ["idea_group"],
+		"body": ["${1:<name>} = {\n\t${2|category = ADM,category = DIP, category = MIL|}\n\n\ttrigger = {\n\t\t${3:<trigger>}\n\t}\n\n\tbonus = { \n\t\t${4:<modifier>}\n\t}\n\t${5:<name>} = { \n\t\t${6:<modifier>}\n\t}\n\t${7:<name>} = { \n\t\t${8:<modifier>}\n\t}\n\t${9:<name>} = { \n\t\t${10:<modifier>}\n\t}\n\t${11:<name>} = { \n\t\t${12:<modifier>}\n\t}\n\t${13:<name>} = { \n\t\t${14:<modifier>}\n\t}\n\t${15:<name>} = { \n\t\t${16:<modifier>}\n\t}\n\t${17:<name>} = { \n\t\t${18:<modifier>}\n\t}\n\n\tai_will_do = {\n\t\tfactor = 1\n\t\t# Use 'modifier' here\n\t}\n}"],
+		"description": "Rough outline of an idea_group"
+	},
+	"National Ideas": {
+		"prefix": ["national_ideas"],
+		"body": ["${1:<name>} = {\n\tstart = {\n\t\t${2:<modifier>}\n\t}\n\n\tbonus = {\n\t\t${3:<modifier>}\n\t}\n\n\ttrigger = {\n\t\t${4:<trigger>}\n\t}\n\n\tfree = yes\n\n\t${5:<name>} = { \n\t\t${6:<modifier>}\n\t}\n\t${7:<name>} = { \n\t\t${8:<modifier>}\n\t}\n\t${9:<name>} = { \n\t\t${10:<modifier>}\n\t}\n\t${11:<name>} = { \n\t\t${12:<modifier>}\n\t}\n\t${13:<name>} = { \n\t\t${14:<modifier>}\n\t}\n\t${15:<name>} = { \n\t\t${16:<modifier>}\n\t}\n\t${17:<name>} = { \n\t\t${18:<modifier>}\n\t}\n}"],
+		"description": "Rough outline of a national idea"
+	},
+
+	//Personality
+	"personality": {
+		"prefix": ["personality"],
+		"body": ["${1:personalityName} = {\n\tallow = {\n\t\t${2:}\n\t}\n\t${3:movement_speed = -0.1}\n}\n$0"],
+		"description": "An IF statement with a LIMIT"
+	},
+
+	//Mercenary Companies
+	"Mercenaries": {
+		"prefix": ["mercenaries"],
+		"body": ["${1:MercenaryName} ={\n\tregiments_per_development = ${2:0.05}\n\tcavalry_weight = ${3:0.05}\n\tcavalry_cap = ${4:4}\n\tartillery_weight = ${5:0.05}\n\tmax_size = ${6:30}\n\tcost_modifier = ${7:0.33}\n\tsprites = { easterngfx_sprite_pack }\n\ttrigger = {\n\t\tis_allowed_to_recruit_mercenaries = yes\n\t\t${8:}\n\t}\n\tmodifier = {\n\t\t${9:mercenary_manpower = 0.1}\n\t}\n}\n$0"],
+		"description": "A Template for mercenaries"
+	},
+
+	//Naval Doctrines
+	"Naval Doctrine": {
+		"prefix": ["naval_doctrine"],
+		"body": ["${1:<name>} = {\n\tcan_select = {\n\t\t${2:<trigger>}\n\t}\n\n\tcountry_modifier = {\n\t\t${3:<modifier>}\n\t}\n\n\teffect = {\n\t\t${4:<effect>}\n\t}\n\n\tremoved_effect = {\n\t\t${5:<effect>}\n\t}\n\n\tbutton_gfx = ${6:<value_int>}\n}"],
+		"description": "Rough outline of a naval_doctrine"
+	},
+	
+	//Diplomatic Action
+	"New Diplomatic Action": {
+		"prefix": ["new_diplomatic_action"],
+		"body": ["${1:<name>} = {\n\tcategory = ${2|alliance,influence, relation, dynasty, covert, access, emperor, papacy, great_powers, trade, province, subsidies, war, annex, sphere, guarantee, league, warning, loan, vassalize, claim|}"],
+		"description": "Rough outline of anew diplomatic action"
+	},
+}	
